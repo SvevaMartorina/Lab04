@@ -5,11 +5,24 @@ class Cabina:
         self.ponte = ponte
         self.prezzo = prezzo
 
-        self.cabine = []
+        self._occupata = False
+        #self.cabine = []
+
+    @property
+    def occupata(self):
+        return self._occupata
+    @occupata.setter
+    def occupata(self, value):
+        self._occupata = value
+
     def __repr__(self):
+        if self.occupata:
+            stato = 'Occupata'
+        else:
+            stato = 'Disponibile'
         return (f'{type(self).__name__} '
                 f'{self.codice}: {self.num_letti} letti -'
-                f'Ponte {self.ponte} - Prezzo {self.prezzo}€ - Disponibile')
+                f'Ponte {self.ponte} - Prezzo {self.prezzo}€ - {stato}')
 
 
 class CabinaAnimali(Cabina):
@@ -20,10 +33,14 @@ class CabinaAnimali(Cabina):
         self.num_animali = num_animali
 
     def __repr__(self):
+        if self.occupata:
+            stato = 'Occupata'
+        else:
+            stato = 'Disponibile'
         return (f'{type(self).__name__} '
                 f'{self.codice}: {self.num_letti} letti -'
                 f'Ponte {self.ponte} - Prezzo {self.prezzo}€ '
-                f'- Max animali:{self.num_animali} - Disponibile')
+                f'- Max animali:{self.num_animali} - {stato}')
 
 class CabinaDelux(Cabina):
     def __init__(self, codice, num_letti, ponte, prezzo, stile):
@@ -34,9 +51,13 @@ class CabinaDelux(Cabina):
         self.stile = stile
 
     def __repr__(self):
+        if self.occupata:
+            stato = 'Occupata'
+        else:
+            stato = 'Disponibile'
         return (f'{type(self).__name__} '
                 f'{self.codice}: {self.num_letti} letti -'
                 f'Ponte {self.ponte} - Prezzo {self.prezzo}€ '
-                f'- Stile: {self.stile} - Disponibile')
+                f'- Stile: {self.stile} - {stato}')
 
 

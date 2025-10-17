@@ -62,6 +62,7 @@ class Crociera:
         cabina_esiste = False
         for cab in self.cabine:
             if cab.codice == codice_cabina:
+                cabina = cab
                 cabina_esiste = True
         if not cabina_esiste:
             raise Exception('La cabina non esiste')
@@ -83,6 +84,7 @@ class Crociera:
         # se cabina e passeggero non sono abbinati
         nuovo_abbinamento = [codice_cabina, codice_passeggero]
         self.abbinamenti.append(nuovo_abbinamento)
+        cabina.occupata = True
         return
 
     def cabine_ordinate_per_prezzo(self):
