@@ -6,7 +6,6 @@ class Cabina:
         self.prezzo = prezzo
 
         self._occupata = False
-        #self.cabine = []
 
     @property
     def occupata(self):

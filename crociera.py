@@ -31,8 +31,6 @@ class Crociera:
             with (open(file_path, 'r', encoding='utf-8') as f):
                 reader = csv.reader(f)
                 for line in reader:
-                    #for el in line:
-                        #el.strip() #pulisco i vari campi, per evitare errori nei controlli successivi
                     if not line: #se la linea è vuota la salto
                         continue
                     if len(line) == 4: #se ha 4 campi è una cabina
@@ -84,7 +82,7 @@ class Crociera:
         # se cabina e passeggero non sono abbinati
         nuovo_abbinamento = [codice_cabina, codice_passeggero]
         self.abbinamenti.append(nuovo_abbinamento)
-        cabina.occupata = True
+        cabina.occupata = True #cabina occupata, richiamo il setter
         return
 
     def cabine_ordinate_per_prezzo(self):
